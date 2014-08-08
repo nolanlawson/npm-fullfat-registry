@@ -366,7 +366,7 @@ FullFat.prototype.merge = function(change) {
   changed = readmeTrim(f) || changed
 
   if (!changed) {
-    this.emit('unchanged');
+    this.emit('unchanged', change);
     this.resume()
   } else {
     this.fetchAll(change, need, [])
