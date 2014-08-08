@@ -365,10 +365,12 @@ FullFat.prototype.merge = function(change) {
 
   changed = readmeTrim(f) || changed
 
-  if (!changed)
+  if (!changed) {
+    this.emit('unchanged');
     this.resume()
-  else
+  } else {
     this.fetchAll(change, need, [])
+  }
 }
 
 FullFat.prototype.put = function(change, did) {
